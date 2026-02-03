@@ -1,10 +1,13 @@
-import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase";
 
 export async function getServerSideProps() {
-  const q = query(collection(db, "deals"), orderBy("createdAt", "desc"));
-  const snapshot = await getDocs(q);
+  const q = query(
+    collection(db, "deals"),
+    orderBy("createdAt", "desc")
+  );
 
+  const snapshot = await getDocs(q);
   const deals = snapshot.docs.map(doc => ({
     id: doc.id,
     ...doc.data(),
@@ -35,27 +38,24 @@ export default function Home({ deals }) {
             <img
               src={deal.image}
               alt={deal.title}
-              style={{ width: "100%", borderRadius: 8 }}
+              style={{ width: "100%", borderRadius: 10 }}
             />
 
             <h3>{deal.title}</h3>
-            <p style={{ fontWeight: "bold" }}>₹ {deal.price}</p>
+            <p>₹{deal.price}</p>
 
-            <a
-              href={deal.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "block",
-                textAlign: "center",
-                background: "#ff4d4f",
-                color: "#fff",
+            <a href={deal.link} target="_blank">
+              <button style={{
+                width: "100%",
                 padding: 10,
-                borderRadius: 6,
-                textDecoration: "none"
-              }}
-            >
-              Get Deal
+                background: "black",
+                color: "white",
+                border: "none",
+                borderRadius: 5,
+                cursor: "pointer"
+              }}>
+                View Deal
+              </button>
             </a>
           </div>
         ))}
