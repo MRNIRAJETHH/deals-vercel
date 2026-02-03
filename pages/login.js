@@ -19,3 +19,6 @@ export default function Login() {
     <div style={{ padding: 20 }}>
       <h2>Admin Login</h2>
       <button onClick={login}>Login</button>
+    </div>
+  );
+}
