@@ -17,3 +17,6 @@ export default function Admin() {
     </div>
   );
 }
+export async function getServerSideProps() {
+  return { props: {} };
+}
