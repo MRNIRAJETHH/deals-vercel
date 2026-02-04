@@ -9,7 +9,7 @@ export default function Admin() {
   const [link, setLink] = useState("");
 
   const addDeal = async () => {
-    if (!title  !price  !image || !link) {
+    if (!title || !price || !image || !link) {
       alert("All fields required");
       return;
     }
