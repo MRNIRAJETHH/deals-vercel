@@ -31,7 +31,7 @@ export default function Home({ deals }) {
         }}
       >
         {deals.length === 0 ? (
-          <p>No deals baby niraj karo na</p>
+          <p>No deals abhishek baby karo na</p>
         ) : (
           deals.map(deal => (
             <div
